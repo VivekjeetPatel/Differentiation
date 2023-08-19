@@ -40,7 +40,7 @@ public class Limit {
         // DoubleUnaryOperator fx = x -> Function.sin(x) / x;
         // DoubleUnaryOperator fx = x -> (1 - Function.cos(x)) / (x * x);
         // DoubleUnaryOperator fx = x->Function.cube(x)*Function.sqr(x);
-        DoubleUnaryOperator fx = x->x;
+        DoubleUnaryOperator fx = x->1/x;
 
         double a = 0;
        try {
