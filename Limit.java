@@ -1,5 +1,5 @@
 
-package Calculus;
+package Differentiation;
 import java.math.BigDecimal;
 import java.util.function.DoubleUnaryOperator;
 
@@ -20,17 +20,17 @@ public class Limit {
        
         BigDecimal delrhl_lhl = RHL.subtract(LHL);
 
-        if (delrhl_lhl.doubleValue()<0.001||delrhl_lhl.doubleValue()<-0.001) {
+        if ((delrhl_lhl.doubleValue()<0.0001&delrhl_lhl.doubleValue()>0.0)||(delrhl_lhl.doubleValue()>-0.0001)&delrhl_lhl.doubleValue() <0.0) {
             BigDecimal limit = LHL.add(RHL).divide(BigDecimal.valueOf(2));
-            System.out.println("*");
+            System.out.println("Limit : "+limit.doubleValue());
+            System.out.println("No Error in Limit class");
+            System.out.println();
             return limit;
-            
-            
+                
         }
        } catch (Exception e) {
         System.out.println(e);
-        System.out.println("ex");
-        System.out.println("**");
+        System.out.println("Exception in Limit class");
        }
     throw new OperationNotSupportedException("Limit Does not exist");
     }
@@ -39,14 +39,16 @@ public class Limit {
         // DoubleUnaryOperator fx = x -> Function.sin(x) / x;
         // DoubleUnaryOperator fx = x -> (1 - Function.cos(x)) / (x * x);
         // DoubleUnaryOperator fx = x->Function.cube(x)*Function.sqr(x);
-        DoubleUnaryOperator fx = x->x;
+        // DoubleUnaryOperator fx = x->1/x;
+        DoubleUnaryOperator fx = x->Function.pow(x,2);
+        // DoubleUnaryOperator fx = x->x;
 
-        double a = 0;
+        double a = 2;
        try {
-         BigDecimal l = limitvalue(fx, a);
+        BigDecimal l = limitvalue(fx, a);
         System.out.println(l);
        } catch (Exception e) {
-        System.out.println(e);
+        System.out.println(e.getMessage());
        }
        
     }
