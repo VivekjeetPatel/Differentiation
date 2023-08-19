@@ -1,5 +1,5 @@
 
-package Calculus;
+package Differentiation;
 import java.math.BigDecimal;
 import java.util.function.DoubleUnaryOperator;
 
@@ -10,7 +10,7 @@ import Function.Function;
 public class Limit {
     private static final BigDecimal DELTA = new BigDecimal(Function.pow(10, -10));
 
-    public static BigDecimal limitvalue(DoubleUnaryOperator fx, double a) throws OperationNotSupportedException {
+    public static double limitvalue(DoubleUnaryOperator fx, double a) throws OperationNotSupportedException {
        try {
         BigDecimal LHL = new BigDecimal(fx.applyAsDouble(a - DELTA.doubleValue()));
         System.out.println("LHL : "+LHL);
@@ -21,15 +21,16 @@ public class Limit {
         BigDecimal delrhl_lhl = RHL.subtract(LHL);
 
         if (delrhl_lhl.doubleValue()<0.001||delrhl_lhl.doubleValue()<-0.001) {
-            BigDecimal limit = LHL.add(RHL).divide(BigDecimal.valueOf(2));
-            System.out.println("*");
+            double limit = LHL.add(RHL).divide(BigDecimal.valueOf(2)).doubleValue();
+            
+            System.out.println("Limit : "+limit);
             return limit;
             
             
         }
        } catch (Exception e) {
         System.out.println(e);
-        System.out.println("ex");
+        
         System.out.println("**");
        }
     throw new OperationNotSupportedException("Limit Does not exist");
@@ -43,7 +44,7 @@ public class Limit {
 
         double a = 0;
        try {
-         BigDecimal l = limitvalue(fx, a);
+        double l = limitvalue(fx, a);
         System.out.println(l);
        } catch (Exception e) {
         System.out.println(e);

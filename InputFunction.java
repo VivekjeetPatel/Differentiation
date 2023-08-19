@@ -1,4 +1,4 @@
-package Calculus;
+package Differentiation;
 public class InputFunction {
     
 }

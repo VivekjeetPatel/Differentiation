@@ -1,4 +1,6 @@
-package Calculus;
+package Differentiation;
+
+
 
 import java.math.BigDecimal;
 import java.util.function.DoubleUnaryOperator;
